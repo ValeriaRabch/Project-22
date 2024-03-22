@@ -35,19 +35,36 @@ Worker* AddWorker(Worker employees[], int& size) {
 	return employ;
 }
 
+Worker* ChangeWorker(Worker employees[], int size, int index) {
+
+	for (int i = 0; i < size; i++) {
+		if (i = index) {
+			cout << "Enter name "; cin >> employees[i].name;
+			cout << "Enter surname "; cin >> employees[i].surname;
+			cout << "Enter years "; cin >> employees[i].years;
+			cout << "Enter number "; cin >> employees[i].number;
+		}
+	}
+	return employees;
+}
+
 int main() {
 	char way[] = { "d:\\Valeria\\file.txt" };
 	int size = 0;
 
 	Worker* employees = new Worker[size];
 
-	int select = 1;
+	int select = 1, index;
 	while (select != 0) {
 		cout << "Select\n1 - Add worker\n2 - change worker\n3 - delete worker\n4 - searching with surname\n5 - searchin with years\n6 - print worker with surname\n7 - save in file"; cin >> select;
 
 		if (select == 1) {
 			employees = AddWorker(employees, size);
 		}
-	
+		if (select == 2) {
+			cout << "Which worker? "; cin >> index;
+			employees = ChangeWorker(employees, size, index - 1);
+		}
+	}
 	return 0;
 }
