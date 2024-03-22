@@ -48,6 +48,24 @@ Worker* ChangeWorker(Worker employees[], int size, int index) {
 	return employees;
 }
 
+Worker* DeleteWorker(Worker employees[], int& size, int index) {
+
+	size--; int r = 0;
+	Worker* employ = new Worker[size];
+
+	for (int i = 0; i < size + 1; i++) {
+		if (i != index) {
+			strcpy(employ[r].name, employees[i].name);
+			strcpy(employ[r].surname, employees[i].surname);
+			strcpy(employ[r].years, employees[i].years);
+			strcpy(employ[r].number, employees[i].number);
+			r++;
+		}
+	}
+	delete[] employees;
+	return employ;
+}
+
 int main() {
 	char way[] = { "d:\\Valeria\\file.txt" };
 	int size = 0;
@@ -64,6 +82,10 @@ int main() {
 		if (select == 2) {
 			cout << "Which worker? "; cin >> index;
 			employees = ChangeWorker(employees, size, index - 1);
+		}
+		if (select == 3) {
+			cout << "Which worker? "; cin >> index;
+			employees = DeleteWorker(employees, size, index - 1);
 		}
 	}
 	return 0;
