@@ -88,6 +88,17 @@ void Print(Worker a, bool b) {
 	}
 }
 
+int SearchingYears(Worker employees[], int size, char years[], int index[]) {
+	int r = 0;
+	for (int i = 0; i < size; i++) {
+		if (strcmp(employees[i].years, years) == 0) {
+			index[r] = i; r++;
+		}
+	}
+
+	return r;
+}
+
 int main() {
 	char way[] = { "d:\\Valeria\\file.txt" };
 	int size = 0;
@@ -114,6 +125,17 @@ int main() {
 			cout << "Enter surname "; cin >> surname;
 			b = SearchingSurname(employees, size, surname, a);
 			Print(b, a);
+		}
+		if (select == 5) {
+			cout << "Enter years "; cin >> years;
+			SearchingYears(employees, size, years, c);
+			for (int i = 0; i < SearchingYears(employees, size, years, c); i++) {
+				cout << "Name " << employees[c[i]].name << ' ';
+				cout << "Surname " << employees[c[i]].surname << ' ';
+				cout << "Years " << employees[c[i]].years << ' ';
+				cout << "Number " << employees[c[i]].number << ' ';
+				cout << endl;
+			}
 		}
 	}
 	return 0;
