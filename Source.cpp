@@ -76,6 +76,18 @@ Worker SearchingSurname(Worker employees[], int size, char surname[], bool& a) {
 	return employees[0];
 }
 
+void Print(Worker a, bool b) {
+	if (b == true) {
+		cout << "Name " << a.name;
+		cout << "Surname " << a.surname;
+		cout << "Years " << a.years;
+		cout << "Number " << a.number;
+	}
+	if (b == false) {
+		cout << "File haven't this worker\n";
+	}
+}
+
 int main() {
 	char way[] = { "d:\\Valeria\\file.txt" };
 	int size = 0;
