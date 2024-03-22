@@ -110,6 +110,20 @@ int SearchingSurnameLetter(Worker employees[], int size, char s, int index[]) {
 	return r;
 }
 
+void SaveInFile(char* way, Worker employees[], int size) {
+	FILE* Employees;
+	Employees = fopen(way, "w");
+
+	for (int i = 0; i < size; i++) {
+		fprintf(Employees, employees[i].name); fprintf(Employees, " ");
+		fprintf(Employees, employees[i].surname); fprintf(Employees, " ");
+		fprintf(Employees, employees[i].years); fprintf(Employees, " ");
+		fprintf(Employees, employees[i].number); fprintf(Employees, " \n");
+	}
+
+	fclose(Employees);
+}
+
 int main() {
 	char way[] = { "d:\\Valeria\\file.txt" };
 	int size = 0;
@@ -159,6 +173,10 @@ int main() {
 				cout << endl;
 			}
 		}
+		if (select == 7) {
+			SaveInFile(way, employees, size);
+		}
 	}
+	SaveInFile(way, employees, size);
 	return 0;
 }
