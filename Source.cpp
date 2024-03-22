@@ -99,6 +99,17 @@ int SearchingYears(Worker employees[], int size, char years[], int index[]) {
 	return r;
 }
 
+int SearchingSurnameLetter(Worker employees[], int size, char s, int index[]) {
+	int r = 0;
+	for (int i = 0; i < size; i++) {
+		if (employees[i].surname[0] == s) {
+			index[r] = i; r++;
+		}
+
+	}
+	return r;
+}
+
 int main() {
 	char way[] = { "d:\\Valeria\\file.txt" };
 	int size = 0;
@@ -130,6 +141,17 @@ int main() {
 			cout << "Enter years "; cin >> years;
 			SearchingYears(employees, size, years, c);
 			for (int i = 0; i < SearchingYears(employees, size, years, c); i++) {
+				cout << "Name " << employees[c[i]].name << ' ';
+				cout << "Surname " << employees[c[i]].surname << ' ';
+				cout << "Years " << employees[c[i]].years << ' ';
+				cout << "Number " << employees[c[i]].number << ' ';
+				cout << endl;
+			}
+		}
+		if (select == 6) {
+			cout << "Enter letter "; cin >> s;
+			SearchingSurnameLetter(employees, size, s, c);
+			for (int i = 0; i < SearchingSurnameLetter(employees, size, s, c); i++) {
 				cout << "Name " << employees[c[i]].name << ' ';
 				cout << "Surname " << employees[c[i]].surname << ' ';
 				cout << "Years " << employees[c[i]].years << ' ';
